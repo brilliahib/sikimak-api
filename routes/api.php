@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -18,3 +19,14 @@ use Illuminate\Support\Facades\Route;
 // Authentication routes
 Route::post('/auth/register', [AuthController::class, 'register']);
 Route::post('/auth/login', [AuthController::class, 'login']);
+
+Route::middleware('auth:api')->group(function () {
+    // Auth
+    Route::prefix('auth')->group(function () {
+        Route::get('/get-auth', [AuthController::class, 'getAuth']);
+        Route::put('/change-password', [AuthController::class, 'changePassword']);
+        Route::put('/update-account', [AuthController::class, 'updateAccount']);
+    });
+
+    Route::apiResource('applications', ApplicationController::class);
+});
