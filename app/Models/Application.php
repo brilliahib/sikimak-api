@@ -19,6 +19,8 @@ class Application extends Model
         'application_category',
         'notes',
         'deadline',
+        'work_location',
+        'submitted_status',
     ];
 
     public function user()

@@ -19,8 +19,10 @@ return new class extends Migration
             $table->text('company_location');
             $table->string('apply_status')->default('CV Screening');
             $table->enum('approval_status', ['pending', 'accepted', 'rejected', 'ghosting'])->default('pending');
-            $table->enum('application_category', ['Internship', 'Full-time', 'Part-time', 'Contract'])->default('Internship');
+            $table->enum('application_category', ['Internship', 'Full-time', 'Part-time', 'Contract', 'Studi Independent'])->default('Internship');
             $table->text('notes')->nullable();
+            $table->enum('submitted_status', ['submitted', 'not submitted'])->default('not submitted');
+            $table->string('work_location')->default('On-site');
             $table->dateTime('deadline')->nullable();
             $table->timestamps();
         });

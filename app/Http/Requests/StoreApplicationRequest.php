@@ -30,6 +30,8 @@ class StoreApplicationRequest extends FormRequest
             'application_category' => 'nullable|in:Internship,Full-time,Part-time,Contract',
             'notes' => 'nullable|string',
             'deadline' => 'nullable|date',
+            'work_location' => 'nullable|string|max:255',
+            'submitted_status' => 'nullable|in:submitted,not submitted',
         ];
     }
 }
