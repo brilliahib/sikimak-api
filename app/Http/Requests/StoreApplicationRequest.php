@@ -32,6 +32,8 @@ class StoreApplicationRequest extends FormRequest
             'deadline' => 'nullable|date',
             'work_location' => 'nullable|string|max:255',
             'submitted_status' => 'nullable|in:submitted,not submitted',
+            'application_link' => 'nullable|url',
+            'poster_link' => 'nullable|url',
         ];
     }
 }

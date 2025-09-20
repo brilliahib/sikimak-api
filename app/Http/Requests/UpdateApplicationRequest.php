@@ -32,6 +32,8 @@ class UpdateApplicationRequest extends FormRequest
             'deadline' => 'nullable|date',
             'submitted_status' => 'sometimes|in:submitted,not submitted',
             'work_location' => 'sometimes|string|max:255',
+            'application_link' => 'nullable|url',
+            'poster_link' => 'nullable|url',
         ];
     }
 }

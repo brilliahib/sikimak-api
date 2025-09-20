@@ -21,6 +21,8 @@ class Application extends Model
         'deadline',
         'work_location',
         'submitted_status',
+        'application_link',
+        'poster_link',
     ];
 
     public function user()
