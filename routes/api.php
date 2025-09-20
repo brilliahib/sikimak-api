@@ -28,5 +28,7 @@ Route::middleware('auth:api')->group(function () {
         Route::put('/update-account', [AuthController::class, 'updateAccount']);
     });
 
+    Route::get('applications/timeline', [ApplicationController::class, 'timeline']);
+    Route::get('applications/summary', [ApplicationController::class, 'summary']);
     Route::apiResource('applications', ApplicationController::class);
 });

@@ -30,6 +30,8 @@ class UpdateApplicationRequest extends FormRequest
             'application_category' => 'sometimes|in:Internship,Full-time,Part-time,Contract',
             'notes' => 'nullable|string',
             'deadline' => 'nullable|date',
+            'submitted_status' => 'sometimes|in:submitted,not submitted',
+            'work_location' => 'sometimes|string|max:255',
         ];
     }
 }

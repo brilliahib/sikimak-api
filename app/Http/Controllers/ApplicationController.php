@@ -40,6 +40,48 @@ class ApplicationController extends Controller
         ], 200);
     }
 
+    public function timeline()
+    {
+        $applications = Application::where('user_id', auth()->id())
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return response()->json([
+            'meta' => [
+                'status' => 'success',
+                'statusCode' => 200,
+                'message' => 'Timeline retrieved successfully',
+            ],
+            'data' => $applications,
+        ], 200);
+    }
+
+    public function summary()
+    {
+        $userId = auth()->id();
+
+        $totalApplications = Application::where('user_id', $userId)->count();
+        $totalNotSubmitted = Application::where('user_id', $userId)
+            ->where('submitted_status', 'not submitted')
+            ->count();
+        $totalAccepted = Application::where('user_id', $userId)
+            ->where('approval_status', 'accepted')
+            ->count();
+
+        return response()->json([
+            'meta' => [
+                'status' => 'success',
+                'statusCode' => 200,
+                'message' => 'Summary applications retrieved successfully',
+            ],
+            'data' => [
+                'total_applications' => $totalApplications,
+                'total_not_submitted' => $totalNotSubmitted,
+                'total_accepted' => $totalAccepted,
+            ],
+        ], 200);
+    }
+
     public function store(StoreApplicationRequest $request): JsonResponse
     {
         $application = Application::create([
